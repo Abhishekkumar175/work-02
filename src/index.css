@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --white: #FFFFFF;
+  --ortho-blue-900: #0B2E4F;
+  --ortho-blue-600: #1565C0;
+  --ortho-blue-100: #E8F1FB;
+  --bone-white: #F7F5F0;
+  --accent-amber: #E8862E;
+  --slate-text: #44525E;
+  --border-grey: #DCE4EA;
+
+  /* Typography */
+  --font-heading: 'Sora', 'Noto Sans Devanagari', sans-serif;
+  --font-body: 'Inter', 'Noto Sans Devanagari', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* To account for the sticky header height */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--slate-text);
+  background-color: var(--white);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--ortho-blue-900);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+a {
+  color: var(--ortho-blue-600);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--ortho-blue-900);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid var(--accent-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.bg-bone {
+  background-color: var(--bone-white);
+}
+
+.bg-blue-100 {
+  background-color: var(--ortho-blue-100);
+}
+
+.bg-blue-900 {
+  background-color: var(--ortho-blue-900);
+  color: var(--white);
+}
+
+.bg-blue-900 h1, .bg-blue-900 h2, .bg-blue-900 h3, .bg-blue-900 h4 {
+  color: var(--white);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--ortho-blue-600);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--ortho-blue-900);
+  color: var(--white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--ortho-blue-600);
+  border: 2px solid var(--ortho-blue-600);
+}
+
+.btn-outline:hover {
+  background-color: var(--ortho-blue-100);
+}
+
+.btn-urgent {
+  background-color: var(--accent-amber);
+  color: var(--white);
+}
+
+.btn-urgent:hover {
+  background-color: #d67a28;
+  color: var(--white);
+}
+
+/* Animations */
+@keyframes recovery-glow {
+  0% { box-shadow: 0 0 0 0 rgba(21, 101, 192, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(21, 101, 192, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(21, 101, 192, 0); }
+}
+
+.pulse-glow {
+  animation: recovery-glow 2s infinite;
+}
+
+/* Cards */
+.card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-grey);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Layouts */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+  .section { padding: 3rem 0; }
+}
